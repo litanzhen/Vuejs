@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div id="ltz">
+        <!-- 异步提交方法1 -->
+        <form action="" @submit="post1($event)">
+            <h1>{{time}}</h1>
+            <button>提交1</button>
+        </form>
+
+        <!-- 异步提交方法2 -->
+        <form action="" @submit.prevent="post2">
+            <h1>{{time}}</h1>
+            <button>提交2</button>
+        </form>
+
+        <!--事件修饰符-->
+        <!--.stop .prevent .capture .self .once-->
+        <!-- 阻止单击事件冒泡 -->
+        <a v-on:click.stop="doThis"></a>
+
+        <!-- 提交事件不再重载页面 -->
+        <form v-on:submit.prevent="onSubmit"></form>
+
+        <!-- 修饰符可以串联 -->
+        <a v-on:click.stop.prevent="doThat"></a>
+
+        <!-- 只有修饰符 -->
+        <form v-on:submit.prevent></form>
+
+        <!-- 添加事件侦听器时使用事件捕获模式 -->
+        <div v-on:click.capture="doThis">...</div>
+
+        <!-- 只当事件在该元素本身（而不是子元素）触发时触发回调 -->
+        <div v-on:click.self="doThat">...</div>
+
+        <!--按键修饰符-->
+        <!-- 只有在 keyCode 是 13 时调用 vm.submit() -->
+        <input v-on:keyup.13="submit">
+        <!-- 同上 -->
+        <input v-on:keyup.enter="submit">
+
+        <!-- 缩写语法 -->
+        <input @keyup.enter="submit">
+    </div>
+</body>
+<script>
+    var app = new Vue({
+        el : '#ltz',
+        data : {
+            time : new Date(),
+        },
+        methods : {
+            post1(event){
+                event.preventDefault();
+                alert("aaaa");
+            },
+            post2(event){
+                alert('bbbb');
+            }
+        }
+    });
+</script>
+</html>

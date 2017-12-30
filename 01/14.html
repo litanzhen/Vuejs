@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div id="ltz">
+        <table border="1" cellspacing="0">
+            <tr>
+                <td>id</td>
+                <td>name</td>
+            </tr>
+            <!--<tr v-for="field in datas">-->
+            <tr v-for="(field, key) in datas">
+                <td>{{key + 1}}</td>
+                <td>{{field.name}}</td>
+            </tr>
+        </table>
+        <hr>
+        <table border="1" cellspacing="0">
+            <tr>
+                <td>id</td>
+            </tr>
+            <!--<tr v-for="field in datas">-->
+            <tr v-for="item in user">
+                <td>{{item}}</td>
+
+            </tr>
+        </table>
+        <hr>
+        <table border="1" cellspacing="0">
+            <tr>
+                <td>id</td>
+                <td>name</td>
+            </tr>
+            <!--<tr v-for="field in datas">-->
+            <tr v-for="(item,key) in user">
+                <td>{{key}}</td>
+                <td>{{item}}</td>
+
+            </tr>
+        </table>
+        <hr>
+        <table border="1" cellspacing="0">
+            <tr>
+                <td>id</td>
+                <td>properties</td>
+                <td>name</td>
+            </tr>
+            <!--<tr v-for="field in datas">-->
+            <tr v-for="(item,key, index) in user">
+                <td>{{index}}</td>
+                <td>{{key}}</td>
+                <td>{{item}}</td>
+
+            </tr>
+        </table>
+        <hr>
+
+    </div>
+</body>
+<script>
+    var app = new Vue({
+        el : '#ltz',
+        data : {
+            datas : [
+                {id : 1, name : "李探珍"},
+                {id : 2, name : "李探珍"},
+                {id : 3, name : "李探珍"},
+                {id : 4, name : "李探珍"},
+            ],
+            user : {
+                name : 'litanzhen',
+                age : 28,
+                sex : 'boy'
+            }
+        }
+    });
+</script>
+</html>

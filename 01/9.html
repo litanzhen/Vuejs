@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../vue.js"></script>
+    <style>
+        .red{color: red}
+        .blue{color: blue}
+    </style>
+</head>
+<body>
+    <div id="ltz">
+        <li v-for="v in show">
+            <span :class="v.status ? 'red' : 'blue'">{{v.title}}</span>
+            <button v-if="!v.status" v-on:click="modifyStatus(v, true)">变红色</button>
+            <button v-if="v.status" v-on:click="modifyStatus(v, false)">变蓝色</button>
+            {{v.status}}
+        </li>
+
+    </div>
+</body>
+<script>
+    var app = new Vue({
+        el : '#ltz',
+        methods : {
+            modifyStatus: function(item, status){
+                //alert(status)
+                item.status = status;
+            }
+        },
+        data : {
+            show : [
+                {title:'李探珍', status: true},
+                {title:'litanzhen', status:true}
+            ]
+        }
+    });
+</script>
+</html>

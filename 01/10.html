@@ -1,0 +1,35 @@
+<!-- 行内样式 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div id="ltz">
+        <h1 :style="{color:'red', fontSize : fontSize + 'px'}">李探珍</h1>
+        <h1 :style="style1">litanzhen</h1>
+        <h1 :style="[style2, style3]">ltz</h1>
+    </div>
+</body>
+<script>
+    var app = new Vue({
+        el : '#ltz',
+        data :{
+            fontSize : 100,
+            style1 : {
+                color:'red',
+                fontSize : 80 + 'px',
+            },
+            style2 : {
+                backgroundColor: 'red',
+            },
+            style3 : {
+                fontSize : 100 + 'px',
+            }
+
+        }
+    });
+</script>
+</html>

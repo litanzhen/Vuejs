@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div id="ltz">
+        <h1 v-if="isShow">litanzhen</h1>
+        <h1 v-show="isShow">李探珍</h1>
+        <input type="checkbox" v-model="isShow">
+    </div>
+</body>
+<script>
+    var app = new Vue({
+        el : '#ltz',
+        data : {
+            isShow : true,
+        }
+    });
+</script>
+</html>

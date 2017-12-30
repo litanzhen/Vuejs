@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .l1{color: red}
+        .l2{color: aqua}
+    </style>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div id="ltz">
+        {{ll}}
+        <h1 :class="'l'+ll">litanzhen</h1>
+        <h1 :class="'l' + ll">李探珍</h1>
+        <input type="text" v-model="ll">
+        <br>
+        <input type="radio" v-model="ll" value="1">red
+        <input type="radio" v-model="ll" value="2">aqua
+    </div>
+</body>
+<script>
+    var app = new Vue({
+        el: '#ltz',
+        data: {
+            ll : 1
+        }
+    });
+</script>
+</html>

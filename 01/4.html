@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div id="ltz">
+        <h1 v-text="txt"></h1>
+        <p v-html="html"></p>
+    </div>
+</body>
+    <script>
+        var app = new Vue({
+           el: '#ltz',
+           data: {
+               txt: 'litanzhen',
+               html: '<h1 style="color: red">李探珍</h1>'
+           }
+        });
+    </script>
+</html>

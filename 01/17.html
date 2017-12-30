@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div id="ltz">
+        <li v-for="(v, key) in datas">
+            {{v.name}}  <button v-on:click="remove(key)">remove</button>
+        </li>
+        <br>
+        <textarea v-model="currentData" cols="20" rows="10"></textarea>
+        <br>
+        <button v-on:click="add('up')">addUp</button>
+        <button v-on:click="add('down')">addDown</button>
+        <br>
+        <button v-on:click="del('up')">deleteUp</button>
+        <button v-on:click="del('down')">deleteDown</button>
+    </div>
+</body>
+<script>
+    var app = new Vue({
+        el : "#ltz",
+        methods : {
+            remove(key){
+                this.datas.splice(key,1);
+            },
+            add(type) {
+                var prepareDate = {name: this.currentData};
+                switch (type) {
+                    case 'up':
+                        this.datas.unshift(prepareDate);
+                        break;
+                    case 'down':
+                        this.datas.push(prepareDate);
+                        break;
+                }
+                this.currentData = '';
+            },
+            del(type){
+                var prepareDate = {name : this.currentData};
+                switch (type){
+                    case 'up':
+                        this.datas.shift();
+                        break;
+                    case 'down':
+                        this.datas.pop();
+                        break;
+                }
+                this.currentData = '';
+            }
+        },
+        data : {
+            datas : [
+                {name : '李探珍'},
+                {name : 'litanzhen'}
+            ],
+            currentData : ''
+        }
+    });
+</script>
+</html>

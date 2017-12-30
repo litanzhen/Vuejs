@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div id="ltz">
+        <template v-if="typereg=='phone'">
+            手机: <input type="text" key="phone">
+        </template>
+        <template v-else="typereg=='mail'">
+            邮箱: <input type="text" key="mail">
+        </template>
+        <br>
+        <input type="radio" value="phone" v-model="typereg">手机
+        <input type="radio" value="main" v-model="typereg">邮箱
+    </div>
+</body>
+<script>
+    var app = new Vue({
+        el : '#ltz',
+        data : {
+            typereg : 'mail'
+        }
+    });
+</script>
+</html>

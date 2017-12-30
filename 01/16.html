@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div id="ltz">
+        <li v-for="(v, key) in datas">
+            {{key}}-- {{v.name}} -- {{v}}
+        </li>
+        <textarea v-model="currentData" rows="5" cols="20"></textarea><br>
+        <button v-on:click="push('up')">addUp</button>
+        <button v-on:click="push('down')">addDown</button>
+        <br>
+        <button v-on:click="del('up')">deleteUp</button>
+        <button v-on:click="del('down')">deleteDown</button>
+    </div>
+</body>
+<script>
+    var app = new Vue({
+        el : '#ltz',
+        methods : {
+            push(type){
+                var properData = {name : this.currentData}
+                switch (type){
+                    case 'up':
+                        this.datas.unshift(properData);
+                        break;
+                    case 'down':
+                        this.datas.push(properData);
+                        break;
+                }
+                this.currentData = '';
+            },
+            del(type){
+                var properData = {name : this.currentData}
+                switch (type){
+                    case 'up':
+                        this.datas.shift(properData);
+                        break;
+                    case 'down':
+                        this.datas.pop(properData);
+                        break;
+                }
+                this.currentData = '';
+            }
+        },
+        data : {
+            datas : [
+                {'name' : 'litanzhen'},
+                {'name' : '李探珍'}
+            ],
+            currentData : ''
+        }
+    });
+</script>
+</html>

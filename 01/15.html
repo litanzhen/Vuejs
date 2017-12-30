@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div id="ltz">
+        <li v-for="(v, key) in comments">
+            {{key}} : {{v}}
+        </li>
+        <textarea v-model="currentData"></textarea>
+        <button v-on:click="push">add</button>
+    </div>
+</body>
+<script>
+    var app = new Vue({
+        el : '#ltz',
+        data : {
+            comments : [
+                {name : 'litanzhen'},
+            ],
+            currentData : '',
+        },
+        methods : {
+            push(){
+                var addData = {name : this.currentData };
+                this.comments.push(addData);
+                this.currentData = '';
+            }
+        }
+    });
+</script>
+</html>
+

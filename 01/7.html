@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div id="ltz">
+        <input type="text" v-model="search">
+        <h1>搜索的结果是:{{result}}</h1>
+        {{search}}
+    </div>
+
+</body>
+<script>
+    var app = new Vue({
+        el: '#ltz',
+        watch:{
+            search: function (newV, oldV) {
+                app.result = newV;
+                console.log(newV + "---" + oldV);
+            }
+        },
+        data:{
+            search: '',
+            result: '',
+        }
+    });
+</script>
+</html>

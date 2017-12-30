@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div id="ltz">
+        请输入年龄：<input type="text" v-model="age"><br>
+        <span v-if="age<16">少年</span>
+        <span v-else-if="age<28">青年</span>
+        <span v-else-if="age<58">壮年</span>
+        <span v-else>老年</span>
+        <br>
+        <input type="checkbox" v-model="flag">选择结果
+        {{flag}}
+    </div>
+</body>
+<script>
+    var app = new Vue({
+        el : '#ltz',
+        data : {
+            flag : '',
+            age : 0
+        }
+    });
+</script>
+</html>

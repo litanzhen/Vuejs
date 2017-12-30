@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div id="ltz">
+        <li v-for="(v,k) in datas">
+            {{v.id}} --- {{v.name}} -- {{k}}
+            <button v-on:click="delCurrent(k)">删除</button>
+        </li>
+        <textarea v-model="currentData" id="" cols="30" rows="10"></textarea>
+        <br>
+        <button v-on:click="add('up')">addUp</button>
+        <button v-on:click="add('down')">addDown</button>
+        <br>
+        <button v-on:click="del('up')">delUp</button>
+        <button v-on:click="del('down')">delDown</button>
+        <br>
+        <button v-on:click="sort()">sort</button>
+        <button v-on:click="reverse()">reverse</button>
+        <br>
+        <input type="text" v-on:keyup.enter="search" placeholder="enter search content" v-model="searchContent">
+    </div>
+</body>
+<script>
+    var app = new Vue({
+        el : '#ltz',
+        methods : {
+            search(){
+                this.datas = this.datas.filter((item)=>{
+                    var reg = new RegExp(this.searchContent, 'i');
+                    return reg.test(item.name);
+                })
+            },
+            delCurrent(key){
+                this.datas.splice(key, 1);
+            },
+            add(type){
+                var length = this.datas.length;
+                var prepareDate = {id : length, name : this.currentData};
+                switch (type){
+                    case 'up':
+                        this.datas.unshift(prepareDate);
+                        break;
+                    case 'down':
+                        this.datas.push(prepareDate);
+                        break;
+                }
+                this.currentData = '';
+            },
+            del(type){
+                switch (type){
+                    case 'up':
+                        this.datas.shift();
+                        break;
+                    case 'down':
+                        this.datas.push();
+                        break;
+                }
+                this.currentData = '';
+            },
+            reverse(){
+                this.datas.reverse();
+            },
+            sort(){
+                this.datas.sort(function (a, b) {
+                    return a.id > b.id;
+                })
+            }
+        },
+        data : {
+            datas : [
+                {id : 2, name: 'litanzhen2'},
+                {id : 4, name: 'litanzhen4'},
+                {id : 1, name: 'litanzhen1'},
+                {id : 3, name: 'litanzhen3'},
+                {id : 5, name: 'litanzhen5'},
+            ],
+            currentData : '',
+            searchContent : '',
+        }
+    });
+</script>
+</html>

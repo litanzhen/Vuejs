@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .green{color: green}
+        .color{color: red}
+        .font{font-size: 200px}
+    </style>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div id="ltz">
+        <h1 :class="li">李探珍</h1>
+        <br>
+        <h1 :class="[li1, li3]">litanzhen</h1>
+    </div>
+</body>
+<script>
+    var app = new Vue({
+        el: '#ltz',
+        data:{
+            li:{green:true, color:true, font:true},
+            li1: 'green',
+            li2:'color',
+            li3:'font'
+        }
+    });
+</script>
+</html>
